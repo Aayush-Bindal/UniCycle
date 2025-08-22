@@ -80,18 +80,24 @@ unicycle/
 
 ```mermaid
 graph TD;
-    A[🔐 Login via Email OTP] --> B[🏫 Explore Day/Night Market] 
-    B --> C[📦 Browse Categories]
-    C --> D[📸 View Listings]
+    A[🔐 User Sign In] --> B[🏫 View Hostel List] 
+    B --> C[🏢 Select a Hostel]
+    C --> D[📦 View Listed Items]
     D --> E[🤝 Buy / Sell / Exchange Options]
     
     E -->|🛒 Buy| F[📬 Send Request to Seller]
     F --> G[✅ Seller Approves?]
     G -- No --> D
     G -- Yes --> H[📞 Reveal Seller Contact]
+    H --> I[👥 Users Meet & Complete Transaction]
 
-    E -->|➕ Sell| J[📝 Create New Listing (with images + category)]
+    E -->|➕ Sell| J[📝 Create New Listing]
     J --> D
+
+    E -->|🔁 Exchange| M[🔄 Propose Item Swap]
+    M --> N[✅ Other User Approves?]
+    N -- No --> D
+    N -- Yes --> H
 ```
 
 ---
