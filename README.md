@@ -1,22 +1,22 @@
-# 🎓 Campus Market
+# 🚲 Unicycle
 
-**Campus Market** is your one-stop marketplace made **by students, for students** — where college students can **buy, sell, or exchange** items like lab coats, calculators, books, snacks, and more.
+**Unicycle** is a student-first marketplace built exclusively for college communities.  
+Think OLX, but optimized for campus life.  
 
-🛍️ Think OLX meets your campus hostel — optimized for student life.  
-🌙 Automatically opens to **Night Market** (hostel-only listings) at night.  
-🕶️ Always in slick dark mode. No payments, just connections.
+🎓 Students can buy, sell, or exchange essentials like lab coats, calculators, books, snacks, and more.  
+🌙 At night, the app automatically switches to **Night Market**, where hostel-only items (like snacks, Maggi, chips) come alive.  
+🔐 Secure login with **email OTP** — freshers can start instantly, but must verify their `@thapar.edu` email later.  
 
 ---
 
-## 🚀 Features
+## 🚀 Features (Phase 1)
 
-- 🔐 **Google Sign-In with college email** (`@college.edu`) required for sellers
-- 📦 List your unused items for sale or exchange
-- 🛒 Browse items posted by others
-- 📬 Send buy requests → Seller approves → Deal offline
-- 🌃 **Night Market** mode for hostel-level selling (chips, Maggi, etc.)
-- 🌓 Smart tab-based switch between **Day Market** (college-wide) and **Night Market**
-- 🖼️ Dark mode UI with neon highlights
+- 🔐 **Email OTP Login** (any email to start, `@thapar.edu` required for verification)  
+- 🌓 **Auto Day/Night Market switch** based on time  
+- 📦 **List, browse, and categorize items**  
+- 📸 **Manual image uploads** for listings  
+- ✅ **Seller approval flow** → Buyers send requests, sellers approve/reject  
+- 🕶️ **Dark theme UI** (always-on, neon highlights at night)  
 
 ---
 
@@ -24,27 +24,31 @@
 
 | Layer       | Tech Used |
 |-------------|-----------|
-| Frontend    | Vite + React + Tailwind CSS |
-| Backend     | FastAPI |
-| Auth        | FireBase Authentication (Google OAuth + PhoneAuth) |
-| Database    | PostgreSQL (via Supabase) |
-| Hosting     | Vercel (Frontend) + Railway (Backend) |
+| Frontend    | React Native + Expo |
+| Backend     | Express.js (Node.js) |
+| Auth        | Custom Email OTP + JWT |
+| Database    | PostgreSQL (self-hosted on GCP Compute Engine) |
+| Storage     | Google Cloud Storage |
+| Hosting     | GCP Cloud Run (Backend), Play Store / App Store (Frontend) |
 
 ---
 
 ## 🛠️ Project Structure
 
 ```
-campus-market/
-├── client/                 # React (Vite + Tailwind)
+unicycle/
+├── app/                   # React Native (Expo)
 │   ├── components/
-│   ├── pages/
-│   └── assets/
+│   ├── screens/
+│   ├── assets/
+│   └── navigation/
 │
-├── server/                 # FastAPI Backend
+├── backend/               # Express.js API
 │   ├── routes/
 │   ├── models/
-│   └── database/
+│   ├── controllers/
+│   ├── middleware/
+│   └── db/
 │
 └── README.md
 ```
@@ -53,21 +57,22 @@ campus-market/
 
 ## 🛣️ Roadmap
 
-### ✅ Phase 1: MVP (within 15 days)
-- [x] Google Sign-In (only `@college.edu` for sellers)
-- [x] Item listing + Explore marketplace
-- [x] Buy request → seller approval → show contact
-- [x] Manual mark as sold
-- [x] Hosted frontend + backend
+### ✅ Phase 1 (MVP)
+- [x] Email OTP login (any email allowed, later verification for `@thapar.edu`)  
+- [x] JWT-protected backend APIs  
+- [x] Auto Day/Night Market switch  
+- [x] Item listings with categories + manual images  
+- [x] Seller approval flow for buyers  
 
-### 🌓 Phase 2: Smart Day/Night Tabs
-- [ ] Auto switch between Day and Night market based on time
-- [ ] Night listings restricted to selected hostel
-- [ ] Explore UI filters (hostel, category, etc.)
+### 🌓 Phase 2
+- [ ] Google OAuth login option  
+- [ ] Reviews and ratings system  
+- [ ] Better UI/UX improvements  
+- [ ] Bug fixes  
 
-### 💬 Phase 3: In-App Bargaining (Future)
-- [ ] Simple in-app chat
-- [ ] Offer → Counter → Accept flow
+### 💰 Phase 3
+- [ ] Monetization features (premium listings, ads, etc.)  
+- [ ] Additional revenue models based on campus demand  
 
 ---
 
@@ -75,54 +80,41 @@ campus-market/
 
 ```mermaid
 graph TD;
-    A[🔐 User Sign In] --> B[🏫 View Hostel List] 
-    B --> C[🏢 Select a Hostel]
-    C --> D[📦 View Listed Items]
+    A[🔐 Login via Email OTP] --> B[🏫 Explore Day/Night Market] 
+    B --> C[📦 Browse Categories]
+    C --> D[📸 View Listings]
     D --> E[🤝 Buy / Sell / Exchange Options]
     
     E -->|🛒 Buy| F[📬 Send Request to Seller]
     F --> G[✅ Seller Approves?]
     G -- No --> D
     G -- Yes --> H[📞 Reveal Seller Contact]
-    H --> I[👥 Users Meet & Complete Transaction]
 
-    E -->|➕ Sell| J[📝 Create New Listing]
+    E -->|➕ Sell| J[📝 Create New Listing (with images + category)]
     J --> D
-
-    E -->|🔁 Exchange| M[🔄 Propose Item Swap]
-    M --> N[✅ Other User Approves?]
-    N -- No --> D
-    N -- Yes --> H
 ```
 
 ---
 
 ## 🧠 Important Notes
 
-* 💡 **Only** `@college.edu` emails can list items (auth-verified)
-* 🆓 Freshers *without* college email can still browse and buy
-* 🧾 No payments handled on platform – buyers & sellers connect offline
-* 🧼 Sellers manually mark listings as *sold*
+* 💡 Freshers can sign up with **any email** and start listing immediately.
+* 🎓 Once they get their **college email (`@thapar.edu`)**, they must verify it to continue listing.
+* 🧾 No payments are handled in-app — students meet offline to complete deals.
+* 🕶️ Always in **dark mode** for a consistent campus vibe.
 
 ---
 
 ## 🤝 Contributing
 
-Want to improve Campus Market? Submit issues, ideas, or pull requests — we're all students here 🚀
+Contributions are welcome! 🚲 Submit ideas, features, or bugfixes via PRs.
 
 ```bash
-git clone https://github.com/Aayush-Bindal/CampusMarketplace
+git clone https://github.com/aayush-bindal/UniCycle/
 ```
-
----
-
-## 📣 Credits
-
-Built with ☕, 🔥, and a dream to stop wasting lab coats  
-feel free to reach out!
 
 ---
 
 ## 📜 License
 
-MIT License © 2025 Campus Market
+MIT License © 2025 Unicycle
