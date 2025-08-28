@@ -6,7 +6,7 @@ const app = express();
 const router = express.Router();
 app.use(CookieParser());
 
-router.get("/", Authorise, (req: Request, res: Response) => {
+router.get("/login", Authorise, (req: Request, res: Response) => {
   res.send("Hello");
 });
 
