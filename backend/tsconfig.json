@@ -13,6 +13,7 @@
     },
     "useUnknownInCatchVariables": false,
     "types": ["vitest/globals"],
+    "typeRoots": ["./node_modules/@types"] 
   },
   "ts-node": {
     "swc": true,
