@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import passport from "../funcs/passportStrategy.ts";
+import passport from "./passportStrategy.js";
 
 export default function Authorise(
   req: Request,
