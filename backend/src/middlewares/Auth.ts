@@ -1,9 +1,6 @@
 import { NextFunction, Request, Response } from "express";
-<<<<<<< Updated upstream
-import passport from "./passportStrategy.js";
-=======
-import passport from '@src/services/passportStrategy';
->>>>>>> Stashed changes
+
+import passport from '@src/middlewares/passportStrategy';
 
 export default function Authorise(
   req: Request,
