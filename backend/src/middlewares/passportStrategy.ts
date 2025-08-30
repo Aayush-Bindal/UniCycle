@@ -1,15 +1,15 @@
-import { Strategy, ExtractJwt } from "passport-jwt";
-import passport from "passport";
+import { Strategy, ExtractJwt } from 'passport-jwt';
+import passport from 'passport';
 
 const some_demo_loginss = {
   userid: 1,
-  email: "abcd@abcd.com",
-  password: "abcd",
+  email: 'abcd@abcd.com',
+  password: 'abed',
 };
 
 const opts = {
   jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-  secretOrKey: "gbtw4hukfvhjksbfcjvkwbjq32knravewdqnlJEKCHVBFEIDNJFKV",
+  secretOrKey: 'btw4hukfvhjksbfcjvkwbjq32knravewdqnlJEKCHVBFEIDNJFKV',
 };
 
 passport.use(
