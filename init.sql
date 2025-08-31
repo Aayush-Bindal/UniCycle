@@ -4,9 +4,8 @@ CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 -- USERS table
 CREATE TABLE users (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-  firebase_uid TEXT UNIQUE NOT NULL,
   name TEXT NOT NULL,
-  email TEXT UNIQUE, -- Can still be null, but must be unique if provided
+  email TEXT NOT NULL UNIQUE,
   username TEXT NOT NULL UNIQUE,
   phone TEXT NOT NULL UNIQUE,
   photo_url TEXT,
@@ -53,6 +52,7 @@ CREATE TABLE transactions (
   listing_id UUID REFERENCES listings(id),
   seller_id UUID REFERENCES users(id),
   buyer_id UUID REFERENCES users(id),
+  amount NUMERIC,
   completed_at TIMESTAMP DEFAULT NOW()
 );
 
